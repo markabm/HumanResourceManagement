@@ -11,6 +11,8 @@ namespace HumanResource.Domain
     {
         public int RoleId { get; set; }
 
+        public string Description { get; set; }
+
         [Required]
         [MaxLength(100)]
         public string RoleName { get; set; }

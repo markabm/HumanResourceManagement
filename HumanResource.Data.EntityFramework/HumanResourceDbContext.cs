@@ -15,6 +15,7 @@ namespace HumanResource.Data.EntityFramework
     public interface IContext
     {
         IDbSet<Role> Roles { get; set; }
+        IDbSet<User> Users { get; set; }
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
         DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
         int SaveChanges();
@@ -29,6 +30,7 @@ namespace HumanResource.Data.EntityFramework
        }
 
        public IDbSet<Role> Roles { get; set; }
+       public IDbSet<User> Users { get; set; }
 
        public override int SaveChanges()
        {

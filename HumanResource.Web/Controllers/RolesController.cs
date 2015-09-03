@@ -27,20 +27,20 @@ namespace HumanResource.Web.Controllers
             return View(_roleService.GetAll().ToList());
         }
 
-        // GET: Roles/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Role role = db.Roles.Find(id);
-        //    if (role == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(role);
-        //}
+        //GET: Roles/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Role role = _roleService.FindById(id.Value);
+            if (role == null)
+            {
+                return HttpNotFound();
+            }
+            return View(role);
+        }
 
         // GET: Roles/Create
         public ActionResult Create()
@@ -84,12 +84,11 @@ namespace HumanResource.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RoleId,RoleName,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy")] Role role)
+        public ActionResult Edit([Bind(Include = "RoleId,RoleName")] Role role)
         {
             if (ModelState.IsValid)
             {
-                //db.Entry(role).State = EntityState.Modified;
-                //db.SaveChanges();
+                _roleService.Update(role);
                 return RedirectToAction("Index");
             }
             return View(role);
