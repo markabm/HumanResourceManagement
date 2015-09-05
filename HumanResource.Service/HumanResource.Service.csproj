@@ -47,7 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DepartmentService.cs" />
     <Compile Include="EntityService.cs" />
+    <Compile Include="IDepartmentService.cs" />
     <Compile Include="IRoleService.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="IUserPasswordHashService.cs" />
