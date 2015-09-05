@@ -39,6 +39,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -56,11 +58,31 @@
     <Compile Include="Migrations\201509031530406_Users.Designer.cs">
       <DependentUpon>201509031530406_Users.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201509050905408_DepartmentPosition.cs" />
+    <Compile Include="Migrations\201509050905408_DepartmentPosition.Designer.cs">
+      <DependentUpon>201509050905408_DepartmentPosition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201509050912357_DepartmentForeignkey.cs" />
+    <Compile Include="Migrations\201509050912357_DepartmentForeignkey.Designer.cs">
+      <DependentUpon>201509050912357_DepartmentForeignkey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\HumanResourceModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HumanResourceModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Model\HumanResourceModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HumanResourceModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\HumanResourceModel.edmx.diagram">
+      <DependentUpon>HumanResourceModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +97,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201509031530406_Users.resx">
       <DependentUpon>201509031530406_Users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509050905408_DepartmentPosition.resx">
+      <DependentUpon>201509050905408_DepartmentPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509050912357_DepartmentForeignkey.resx">
+      <DependentUpon>201509050912357_DepartmentForeignkey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
