@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using HumanResource.Data.EntityFramework;
 using HumanResource.Domain;
+using System.Linq.Expressions;
+using HumanResource.Data.EntityFramework.Data;
 
 namespace HumanResource.Service
 {
@@ -48,7 +50,36 @@ namespace HumanResource.Service
         public virtual IEnumerable<T> GetAll()
         {
             return _dbset.AsEnumerable<T>();
-        } 
+        }
+
+        //public PaginatedList<T> GetAll(int pageIndex, int pageSize)
+        //{
+        //    return GetAll(pageIndex, pageSize);
+        //}
+
+        //public PaginatedList<T> GetAll(int pageIndex, int pageSize, Expression<Func<T, int>> keySelector, OrderBy orderBy = OrderBy.Ascending)
+        //{
+        //    return GetAll(pageIndex, pageSize, keySelector, null, orderBy);
+        //}
+
+        //public PaginatedList<T> GetAll(int pageIndex, int pageSize, Expression<Func<T, int>> keySelector, Expression<Func<T, bool>> predicate, OrderBy orderBy, params Expression<Func<T, object>>[] includeProperties)
+        //{
+        //    var entities = FilterQuery(keySelector, predicate, orderBy, includeProperties);
+        //    var total = entities.Count();// entities.Count() is different than pageSize
+        //    entities = entities.Paginate(pageIndex, pageSize);
+        //    return entities.ToPaginatedList(pageIndex, pageSize, total);
+        //}
+
+        //private IQueryable<T> FilterQuery(Expression<Func<T, int>> keySelector, Expression<Func<T, bool>> predicate, OrderBy orderBy,
+        //    Expression<Func<T, object>>[] includeProperties)
+        //{
+        //    var entities = IncludeProperties(includeProperties);
+        //    entities = (predicate != null) ? entities.Where(predicate) : entities;
+        //    entities = (orderBy == OrderBy.Ascending)
+        //        ? entities.OrderBy(keySelector)
+        //        : entities.OrderByDescending(keySelector);
+        //    return entities;
+        //}
 
         public T FindById(object Id)
         {

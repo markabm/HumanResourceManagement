@@ -59,12 +59,8 @@ namespace HumanResource.Web.Controllers
             if (ModelState.IsValid)
             {
                 var passwordHash = _userHashPassword.HashPassword(user.PasswordHash);
-                if (_userHashPassword.VerifyHashedPassword(passwordHash, user.PasswordHash))
-                {
-                    user.PasswordHash = passwordHash;
-                    _userService.Create(user);
-                }
-                
+                user.PasswordHash = passwordHash;
+                _userService.Create(user);
                 return RedirectToAction("Index");
             }
 

@@ -12,7 +12,7 @@ using HumanResource.Service;
 
 namespace HumanResource.Web.Controllers
 {
-    public class DepartmentsController : Controller
+    public class DepartmentsController : BaseController
     {
         private IDepartmentService _departmentService;
 
