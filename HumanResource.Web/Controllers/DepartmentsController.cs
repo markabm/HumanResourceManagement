@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using HumanResource.Data.EntityFramework;
 using HumanResource.Domain;
 using HumanResource.Service;
+using PagedList;
 
 namespace HumanResource.Web.Controllers
 {
@@ -22,9 +23,35 @@ namespace HumanResource.Web.Controllers
         }
 
         // GET: Departments
-        public ActionResult Index()
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(_departmentService.GetAll());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var department = from dept in _departmentService.GetAll()
+                       select dept;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                department = department.Where(s => s.DepartmentName.ToLower().Contains(searchString.ToLower()));
+            }
+
+            int pageSize = 20;
+            int pageNumber = (page ?? 1);
+
+            return View(department.ToPagedList(pageNumber,pageSize));
         }
 
         // GET: Departments/Details/5
