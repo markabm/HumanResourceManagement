@@ -16,5 +16,7 @@ namespace HumanResource.Domain
         [Required]
         [MaxLength(100)]
         public string RoleName { get; set; }
+
+        public virtual ICollection<RolePermission> RolePermissions { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using System.Data.Entity;
 using HumanResource.Data.EntityFramework;
 using HumanResource.Domain;
 using System.Linq.Expressions;
-using HumanResource.Data.EntityFramework.Data;
+
 
 namespace HumanResource.Service
 {

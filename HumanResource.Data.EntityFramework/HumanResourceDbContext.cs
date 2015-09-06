@@ -18,6 +18,7 @@ namespace HumanResource.Data.EntityFramework
         IDbSet<User> Users { get; set; }
         IDbSet<Department> Departments { get; set; }
         IDbSet<Position> Positions { get; set; }
+        IDbSet<RolePermission> RolePermissions { get; set; }
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
         DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
         int SaveChanges();
@@ -35,6 +36,7 @@ namespace HumanResource.Data.EntityFramework
        public IDbSet<User> Users { get; set; }
        public IDbSet<Department> Departments { get; set; }
        public IDbSet<Position> Positions { get; set; }
+       public IDbSet<RolePermission> RolePermissions { get; set; }
 
        public override int SaveChanges()
        {

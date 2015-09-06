@@ -13,7 +13,7 @@ namespace HumanResource.Domain
 
         public string PositionName { get; set; }
 
-        public int PositionNoEmployee { get; set; }
+        public int PositionNoOfEmployee { get; set; }
 
         public int DepartmentId { get; set; }
 

@@ -146,6 +146,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\AdventureWorks2012_Data.mdf" />
+    <Content Include="App_Data\AdventureWorks2012_log.ldf" />
     <Content Include="App_Data\HumanResourceDb.mdf" />
     <Content Include="App_Data\HumanResourceDb_log.ldf">
       <DependentUpon>HumanResourceDb.mdf</DependentUpon>
@@ -167,6 +169,7 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionFilter\HumanResourceAttributes.cs" />
     <Compile Include="App_Start\AttributeRoutingConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />

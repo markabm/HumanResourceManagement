@@ -55,7 +55,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\OrderBy.cs" />
     <Compile Include="HumanResourceDbContext.cs" />
     <Compile Include="Migrations\201509020908029_Initial.cs" />
     <Compile Include="Migrations\201509020908029_Initial.Designer.cs">
@@ -76,6 +75,10 @@
     <Compile Include="Migrations\201509051241312_DepartmentSpelling.cs" />
     <Compile Include="Migrations\201509051241312_DepartmentSpelling.Designer.cs">
       <DependentUpon>201509051241312_DepartmentSpelling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201509061700395_PositionNoOfEmp_Permission.cs" />
+    <Compile Include="Migrations\201509061700395_PositionNoOfEmp_Permission.Designer.cs">
+      <DependentUpon>201509061700395_PositionNoOfEmp_Permission.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\HumanResourceModel.Designer.cs">
@@ -117,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201509051241312_DepartmentSpelling.resx">
       <DependentUpon>201509051241312_DepartmentSpelling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509061700395_PositionNoOfEmp_Permission.resx">
+      <DependentUpon>201509061700395_PositionNoOfEmp_Permission.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
