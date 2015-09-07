@@ -12,7 +12,7 @@ using HumanResource.Service;
 
 namespace HumanResource.Web.Controllers
 {
-    public class RolesController : Controller
+    public class RolesController : BaseController
     {
         IRoleService _roleService;
 

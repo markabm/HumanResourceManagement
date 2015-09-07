@@ -23,6 +23,11 @@ namespace HumanResource.Service
         {
             return _dbset.FirstOrDefault(x => x.UserName == userName);
         }
-               
+        
+        public int GetUserRoleId(int userId)
+        {
+            var userRoleId = _context.UserRoles.Where(x => x.UserId == userId).FirstOrDefault();
+            return userRoleId.RoleId;
+        }
     }
 }

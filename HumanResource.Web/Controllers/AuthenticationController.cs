@@ -1,4 +1,5 @@
 ﻿using AttributeRouting.Web.Mvc;
+using HumanResource.Service;
 using HumanResource.Web.Models.Authentication;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
@@ -13,9 +14,18 @@ namespace HumanResource.Web.Controllers
 {
     public class AuthenticationController : Controller
     {
+        private IAuthenticationService _authenticationService;
+        private IUserService _userService;
+
         IAuthenticationManager Authentication
         {
             get { return HttpContext.GetOwinContext().Authentication; }
+        }
+
+        public AuthenticationController(IAuthenticationService authenticationService, IUserService userService)
+        {
+            _authenticationService = authenticationService;
+            _userService = userService;
         }
 
         [GET("login")]
@@ -30,8 +40,9 @@ namespace HumanResource.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (input.HasValidUsernameAndPassword)
+                if (_authenticationService.HasValidUsernameAndPassword(input.Username,input.Password))
                 {
+
                     var identity = new ClaimsIdentity(new[] {
                             new Claim(ClaimTypes.Name, input.Username),
                         },

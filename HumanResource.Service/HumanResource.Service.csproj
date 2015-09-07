@@ -47,9 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthenticationService.cs" />
     <Compile Include="AuthorizeService.cs" />
     <Compile Include="DepartmentService.cs" />
     <Compile Include="EntityService.cs" />
+    <Compile Include="IAuthenticationService.cs" />
     <Compile Include="IAuthorizeService.cs" />
     <Compile Include="IDepartmentService.cs" />
     <Compile Include="IRoleService.cs" />

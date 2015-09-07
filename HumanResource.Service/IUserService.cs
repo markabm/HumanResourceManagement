@@ -10,5 +10,6 @@ namespace HumanResource.Service
     public interface IUserService : IService<User>
     {
         User GetByName(string UserName);
+        int GetUserRoleId(int userId);
     }
 }
