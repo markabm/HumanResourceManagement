@@ -5,11 +5,20 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using System.Web.Routing;
+using HumanResource.Web.Controllers;
+using HumanResource.Service;
 
 namespace HumanResource.Web.ActionFilter
 {
     public class HumanResourceAttributes : AuthorizeAttribute
     {
+        public IAuthorizeService myAuthService { get; set; }
+
+        public HumanResourceAttributes()
+        {
+            myAuthService = DependencyResolver.Current.GetService<IAuthorizeService>();
+        }
+
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
             if (filterContext.HttpContext.User.Identity.IsAuthenticated)
@@ -17,8 +26,9 @@ namespace HumanResource.Web.ActionFilter
                 //Create permission string based on the requested controller name and action name in the format 'controllername-action'
                 string requiredPermission = String.Format("{0}-{1}", filterContext.ActionDescriptor.ControllerDescriptor.ControllerName, filterContext.ActionDescriptor.ActionName);
                 base.OnAuthorization(filterContext);
+
                 //Create an instance of our custom user authorization object passing requesting user's identity id into constructor
-                //PMUser requestingUser = new PMUser(filterContext.RequestContext.HttpContext.User.Identity.GetUserId<int>());
+                int roleId = (filterContext.RequestContext.HttpContext.User.Identity.GetUserId<int>());
 
                 //Check if the requesting user has the permission to run the controller's action
                 //if (!requestingUser.HasPermission(requiredPermission))

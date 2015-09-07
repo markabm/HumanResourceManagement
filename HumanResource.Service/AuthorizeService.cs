@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HumanResource.Service
 {
-    public class AuthorizeService : EntityService<RolePermission>
+    public class AuthorizeService : EntityService<RolePermission>, IAuthorizeService
     {
         private IContext _context;
 
@@ -19,9 +19,18 @@ namespace HumanResource.Service
             _dbset = _context.Set<RolePermission>();
         }
 
-        //public Permission GetPermissionByRole(int roleId, string permissionName)
-        //{
-        //    _context.RolePermissions
-        //}
+        public bool HasPermission(int roleId, string permissionName)
+        {
+            var permission = (from rp in _context.RolePermissions
+                             join r in _context.Roles on rp.RoleId equals r.RoleId
+                             join p in _context.Permissions on rp.PermissionId equals p.PermissionId
+                             where rp.RoleId == roleId && p.PermissionName == permissionName
+                             select p).FirstOrDefault();
+
+            if (permission != null)
+                return true;
+            else
+                return false;
+        }
     }
 }

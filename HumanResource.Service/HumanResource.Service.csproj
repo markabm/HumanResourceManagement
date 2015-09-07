@@ -50,6 +50,7 @@
     <Compile Include="AuthorizeService.cs" />
     <Compile Include="DepartmentService.cs" />
     <Compile Include="EntityService.cs" />
+    <Compile Include="IAuthorizeService.cs" />
     <Compile Include="IDepartmentService.cs" />
     <Compile Include="IRoleService.cs" />
     <Compile Include="IService.cs" />
